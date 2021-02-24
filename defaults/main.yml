@@ -1,0 +1,32 @@
+---
+CYBERARK_HOST: 'server.example.com'
+CYBERARK_API_URL: "10.132.0.2"
+CYBERARK_API_USERNAME: 'myConjurAccount'
+CYBERARK_API_PASSWORD: '3as0t2734pgx992s27b0e28kwdc0syb33n30evsk82zqex521rt85gm'
+
+CYBERARK_AUTH_URL: 'http://components.cyberark.local'
+CYBERARK_AUTH_USERNAME: 'testaccount1'
+CYBERARK_AUTH_PASSWORD: 'password1'
+CYBERARK_AUTH_EMAIL: 'ansibleuser@demo.com'
+CYBERARK_AUTH_FIRSTN: "micahel"
+CYBERARK_AUTH_LASTN: "deehan"
+CYBERARK_AUTH_INTIT_PW: "password1"
+CYBERARK_AUTH_USER_TYPE: "EPVUser"
+CYBERARK_AUTH_GROUP_NAME: "AnsibleAdmins"
+
+RESET_USER_PASSWORD: "Cyberark1"
+
+fields:
+  - id: username
+    type: string
+    label: Username
+    help_text: CyberArk REST API Username
+  - id: password
+    type: string
+    label: Password
+    secret: true
+    help_text: CyberArk REST API Password
+  - id: pvwa_url
+    type: string
+    label: PVWA URL
+    help_text: 'CyberArk PVWA URL e.g. https://pvwa.cyberark.com'

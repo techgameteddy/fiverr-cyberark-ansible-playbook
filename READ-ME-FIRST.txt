@@ -1,0 +1,18 @@
+Here is your playbook requested. 
+As we discussed the playbook follows the CRUD request. 
+The playbook is broken into specific tasks to make it job specific when adding jobs in ansible tower.
+
+The playbook does the following and more 
+* Creates user account for CyberArk
+* Removes user account for CyberArk 
+* rotates and resets api key for user specific accounts 
+* Deletes and deprovisions a users account 
+
+These tasks can all be done with user accounts and service accounts connected to 
+CyberArk. 
+
+
+ When setting up the job in ansible tower you can leverage the `CYBERARK_API_USERNAME` as the name of the user who will logon to the vault
+ 
+ Read the ansible-tower-setup.md file to understand how to deploy to ansible tower as a job template. 
+ read the README.md to understand how to use the playbook without Ansible tower or to learn about the variables being used.

@@ -1,0 +1,38 @@
+---
+- hosts: '{{ CYBERARK_HOST }}'
+  collections:
+    - cyberark.pas
+
+  tasks:
+    - name: Logon to CyberArk Vault
+      cyberark_authentication:
+        api_base_url: "{{ CYBERARK_API_URL }}"
+        validate_certs: no
+        username: "{{ CYBERARK_API_USERNAME }}"
+        password: "{{ CYBERARK_API_USERNAME }}"
+
+    - name: Debug message
+      debug:
+        var: cyberark_session
+
+    - name: Account
+      cyberark_account:
+        identified_by: "address,username"
+        safe: "Test"
+        address: "cyberark.svc"
+        username: "cyberark-administrator"
+        platform_id: Password-Never
+        cyberark_session: "{{ cyberark_session }}"
+      register: cyberarkaction
+
+    - name: Debug message
+      debug:
+        var: cyberarkaction
+
+    - name: Logoff from CyberArk Vault
+      cyberark_authentication:
+        state: absent
+        cyberark_session: "{{ cyberark_session }}"
+
+    - name: Debug message
+      debug: var=cyberark_session

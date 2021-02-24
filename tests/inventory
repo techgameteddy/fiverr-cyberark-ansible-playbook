@@ -1,0 +1,7 @@
+# localhost ansible_connection=docker
+# localhost ansible_host=172.22.0.6
+#localhost ansible_connection=docker
+
+localhost 172.22.0.6
+
+testserver ansible_host=104.131.32.57

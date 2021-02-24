@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+
+  collections:
+    - cyberark.pas
+
+  tasks:
+    - name: Logon to CyberArk Vault
+      cyberark_authentication:
+        api_base_url: "{{ CYBERARK_API_URL }}"
+        validate_certs: no
+        username: "{{ CYBERARK_API_USERNAME }}"
+        password: "{{ CYBERARK_API_USERNAME }}"
+
+    - name: Debug message
+      debug:
+        var: cyberark_session
+
+    - name: Disabling a CyberArk User
+      cyberark_user:
+        username: "{{ CYBERARK_AUTH_USERNAME }}"
+        disabled: true
+        cyberark_session: "{{ cyberark_session }}"
+      register: cyberarkaction
+
+    - name: Debug message
+      debug:
+        var: cyberarkaction
+
+
+    - name: Logoff from CyberArk Vault
+      cyberark_authentication:
+        state: absent
+        cyberark_session: "{{ cyberark_session }}"

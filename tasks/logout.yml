@@ -1,0 +1,7 @@
+- name: Logoff from CyberArk Vault
+  cyberark_authentication:
+    state: absent
+    cyberark_session: "{{ cyberark_session }}"
+
+- name: Debug message
+  debug: var=cyberark_session

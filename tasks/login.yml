@@ -1,0 +1,14 @@
+- name: Logon to CyberArk Vault
+  cyberark_authentication:
+    api_base_url: "{{ CYBERARK_API_URL }}"
+    validate_certs: no
+    username: "{{ CYBERARK_API_USERNAME }}"
+    password: "{{ CYBERARK_API_USERNAME }}"
+
+- name: Debug message
+  debug:
+    var: cyberark_session
+
+
+Needed to complete playbook:
+Cyberark api administrative username and password
